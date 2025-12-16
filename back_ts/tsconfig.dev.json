@@ -1,0 +1,11 @@
+{
+  "ts-node": {
+    "esm": true,
+    "experimentalEsm": true,
+    "transpileOnly": true
+  },
+  "compilerOptions": {
+    "module": "ES2020",
+    "target": "ES2020"
+  }
+}

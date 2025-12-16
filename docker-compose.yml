@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15
+    container_name: user-mgmt-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: user_management
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  api:
+    build: ./back
+    container_name: user-mgmt-api
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/user_management?schema=public
+      JWT_SECRET: super-secret-jwt-key
+      PORT: 4000
+    ports:
+      - "4000:4000"
+
+  web:
+    build: ./frond
+    container_name: user-mgmt-web
+    depends_on:
+      - api
+    environment:
+      VITE_API_URL: http://api:4000
+    ports:
+      - "5173:5173"
+
+volumes:
+  db_data:
