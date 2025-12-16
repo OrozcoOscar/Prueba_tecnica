@@ -30,6 +30,9 @@ Endpoints principales:
 2. Instala dependencias: `cd frond && npm install`.
 3. Ejecuta: `npm run dev` (puerto 5173).
 
+### Demo desplegado
+- Login: https://prueba-tecnica-front.onrender.com/
+
 Flujo:
 - Inicia sesión con el admin semilla.
 - Como admin puedes crear usuarios y asignarles rol.
